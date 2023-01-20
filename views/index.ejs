@@ -1,0 +1,29 @@
+<main class="container my-5">
+  <h1>Todo list</h1>
+  <br />
+  <div class="d-flex justify-content-start">
+    <% listTodo.forEach((item) => { %>
+    <div class="todo-item card-body mx-2">
+      <ul class="list-group">
+        <% item.list.forEach((data) => { %>
+          <li class="list-group-item my-1">
+            <div class="form-group form-check mb-0">
+              <input class="form-check-input" data-id="<%- item.id %>" data-todo-id="<%- data.id %>" type="checkbox" <% if (data.completed) { %> checked <% } %>/>
+              <label class="form-check-label">
+                <% if (data.completed) { %>
+                  <del><%- data.todo %></del>
+                <% } else { %>
+                  <%- data.todo %>
+                <% } %>
+              </label>
+            </div>
+          </li>
+        <%});%>
+      </ul>
+    </div>
+    <%});%>
+  </div>
+</main>
+<script>
+
+</script>

@@ -4,7 +4,8 @@
   "description": "Use express.js to make a awesome simple application to do list.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,14 @@
   },
   "homepage": "https://github.com/emhat098/express-note-4u#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "marked": "^4.2.12",
+    "pg": "^8.8.0",
+    "postgres": "^3.3.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }
