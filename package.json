@@ -1,0 +1,23 @@
+{
+  "name": "express-note-4u",
+  "version": "1.0.0",
+  "description": "Use express.js to make a awesome simple application to do list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emhat098/express-note-4u.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emhat098/express-note-4u/issues"
+  },
+  "homepage": "https://github.com/emhat098/express-note-4u#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
