@@ -4,9 +4,8 @@
   "description": "Use express.js to make a awesome simple application to do list.",
   "main": "index.js",
   "scripts": {
-    "build" : "npm install",
     "dev": "nodemon index.js",
-    "start": "ENV=production node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
