@@ -6,7 +6,7 @@
   "scripts": {
     "build" : "npm install",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "ENV=production node index.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3"
+  },
+  "engines": {
+    "node": "^18.12.1"
   }
 }
