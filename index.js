@@ -17,12 +17,30 @@ app.set("layout", "./layout/main");
 app.set("view engine", "ejs");
 
 app.get("/", async (_, res) => {
-  const listTodo = await client`SELECT * FROM todos;`;
+  const listTodo = await client`SELECT * FROM todos ORDER BY id;`;
   listTodo.map((todo) => {
     todo.list = JSON.parse(todo.list);
     return todo;
   });
   res.render("index", { listTodo });
+});
+
+app.get("/api/todo/update/:id/:idTask", async (req, res) => {
+  const {id, idTask} = req.params;
+  const todos = await client`SELECT * FROM todos WHERE id = ${id};`;
+  const listTask = JSON.parse(todos[0]?.list);
+  if (listTask) {
+    listTask.map((task) => {
+      if (task.id == idTask) {
+        task.completed = !task.completed;
+      }
+      return task;
+    });
+    await client`UPDATE todos SET list = ${JSON.stringify(listTask)} WHERE id = ${id};`;
+    return res.status(200).json("Updated data");
+  } else {
+    return res.status(404).json("No todo found.");
+  }
 });
 
 app.get("/about", (_, res) => {

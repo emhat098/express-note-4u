@@ -8,12 +8,12 @@
         <% item.list.forEach((data) => { %>
           <li class="list-group-item my-1">
             <div class="form-group form-check mb-0">
-              <input class="form-check-input" data-id="<%- item.id %>" data-todo-id="<%- data.id %>" type="checkbox" <% if (data.completed) { %> checked <% } %>/>
+              <input class="form-check-input" onclick="toogleCompleteTask(this, '<%- item.id %>', '<%- data.id %>')" type="checkbox" <% if (data.completed) { %> checked <% } %>/>
               <label class="form-check-label">
                 <% if (data.completed) { %>
                   <del><%- data.todo %></del>
                 <% } else { %>
-                  <%- data.todo %>
+                  <span><%- data.todo %></span>
                 <% } %>
               </label>
             </div>
@@ -25,5 +25,22 @@
   </div>
 </main>
 <script>
-
+  function toogleChangeElement(element, taskData, isCompleted) {
+    const child = document.createElement(isCompleted ? "del" : "span" );
+    child.innerHTML = taskData;
+    element.children[0]?.remove();
+    element.appendChild(child);
+  }
+  
+  const toogleCompleteTask = (element, idTodo, idTask) => {
+    const todoElement = element.parentNode;
+    const label = todoElement.querySelector('label.form-check-label');
+    const taskData = label.innerText;
+    const nodeName = label.children[0]?.nodeName;
+    toogleChangeElement(label, taskData, element.checked);
+    fetch(`/api/todo/update/${idTodo}/${idTask}`)
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
 </script>
